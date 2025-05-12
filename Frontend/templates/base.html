@@ -1,0 +1,28 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>File Sharing App</title>
+    <link rel="stylesheet" href="{% static 'core/css/core_styles.css' %}">
+</head>
+<body>
+    <header>
+        <h1>📁 File Sharing Web App</h1>
+        {% if user.is_authenticated %}
+            <p>Welcome, {{ user.username }} | <a href="{% url 'logout' %}">Logout</a></p>
+        {% else %}
+            <p><a href="{% url 'login' %}">Login</a></p>
+        {% endif %}
+    </header>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        <p>© 2025 FileShare App</p>
+    </footer>
+</body>
+</html>
